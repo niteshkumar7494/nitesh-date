@@ -456,23 +456,10 @@
         datePicker.min =
             `${year}-${month}-${day}`;
 
+/* =================================
+   NO BUTTON - INTERACTIVE
+================================= */
 
-        /* =================================
-           NO BUTTON - RUN AWAY
-        ================================= */
-       /* GET ELEMENTS */
-
-const screen1 = document.getElementById("screen1");
-const screen2 = document.getElementById("screen2");
-const screen3 = document.getElementById("screen3");
-
-const yes = document.getElementById("yes");
-const no = document.getElementById("no");
-
-const confirm = document.getElementById("confirm");
-
-
-// 👇 YAHAN NAYA NO BUTTON CODE
 let noCount = 0;
 
 const noTexts = [
@@ -483,7 +470,161 @@ const noTexts = [
     "Catch me if you can! 🏃"
 ];
 
-// ...baaki No button code...
+
+function moveNoButton() {
+
+    noCount++;
+
+    /* Change button text */
+
+    const textIndex =
+        Math.min(
+            noCount,
+            noTexts.length - 1
+        );
+
+    no.textContent =
+        noTexts[textIndex];
+
+
+    /* Make YES button bigger */
+
+    const yesScale =
+        Math.min(
+            1 + noCount * 0.08,
+            1.4
+        );
+
+    yes.style.transform =
+        `scale(${yesScale})`;
+
+
+    /* Random position */
+
+    const padding = 20;
+
+    const buttonWidth =
+        no.offsetWidth;
+
+    const buttonHeight =
+        no.offsetHeight;
+
+
+    const maxX =
+        window.innerWidth -
+        buttonWidth -
+        padding;
+
+
+    const maxY =
+        window.innerHeight -
+        buttonHeight -
+        padding;
+
+
+    const randomX =
+        Math.floor(
+            Math.random() * maxX
+        );
+
+
+    const randomY =
+        Math.floor(
+            Math.random() * maxY
+        );
+
+
+    no.style.position =
+        "fixed";
+
+
+    no.style.left =
+        randomX + "px";
+
+
+    no.style.top =
+        randomY + "px";
+
+
+    /* After several attempts */
+
+    if (noCount >= 5) {
+
+        no.textContent =
+            "Okay okay... YES? 🥺❤️";
+
+    }
+}
+
+
+/* =================================
+   CURSOR DETECTION
+================================= */
+
+document.addEventListener(
+    "mousemove",
+    function(event) {
+
+        const rect =
+            no.getBoundingClientRect();
+
+
+        const centerX =
+            rect.left +
+            rect.width / 2;
+
+
+        const centerY =
+            rect.top +
+            rect.height / 2;
+
+
+        const distance =
+            Math.sqrt(
+
+                Math.pow(
+                    event.clientX -
+                    centerX,
+                    2
+                )
+
+                +
+
+                Math.pow(
+                    event.clientY -
+                    centerY,
+                    2
+                )
+
+            );
+
+
+        /* Cursor 70px ke andar aaye */
+
+        if (distance < 70) {
+
+            moveNoButton();
+
+        }
+
+    }
+);
+
+
+/* =================================
+   MOBILE TOUCH
+================================= */
+
+no.addEventListener(
+    "touchstart",
+    function(event) {
+
+        event.preventDefault();
+
+        moveNoButton();
+
+    }
+);
         /* =================================
            YES BUTTON
         ================================= */
