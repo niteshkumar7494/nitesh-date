@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>From Nitesh ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #ff758c,
+                #ff7eb3,
+                #ffc3d1
+            );
+        }
+
+        /* MAIN CARD */
+        .card {
+            width: 90%;
+            max-width: 470px;
+
+            padding: 40px 25px;
+
+            text-align: center;
+
+            background: rgba(255,255,255,0.96);
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.25);
+
+            z-index: 10;
+        }
+
+        /* HEART */
+        .heart {
+            font-size: 75px;
+
+            animation: heartbeat 1.2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+        }
+
+        /* TEXT */
+        h1 {
+            margin-top: 15px;
+
+            color: #ff416c;
+
+            font-size: 30px;
+        }
+
+        p {
+            margin-top: 12px;
+
+            color: #555;
+
+            font-size: 18px;
+
+            line-height: 1.6;
+        }
+
+        .from {
+            color: #ff416c;
+
+            font-weight: bold;
+
+            font-size: 16px;
+        }
+
+        .small-text {
+            color: #888;
+
+            font-size: 15px;
+        }
+
+        /* BUTTON AREA */
+        .buttons {
+            margin-top: 35px;
+
+            height: 80px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 20px;
+
+            position: relative;
+        }
+
+        /* ALL BUTTONS */
+        button {
+            border: none;
+
+            padding: 14px 30px;
+
+            border-radius: 50px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        /* YES + CONFIRM */
+        #yes,
+        #confirm {
+
+            background: linear-gradient(
+                135deg,
+                #ff416c,
+                #ff4b2b
+            );
+
+            color: white;
+
+            box-shadow:
+                0 8px 20px
+                rgba(255,65,108,0.4);
+        }
+
+        #yes:hover,
+        #confirm:hover {
+            transform: scale(1.08);
+        }
+
+        /* NO */
+        #no {
+
+            background: #eeeeee;
+
+            color: #555;
+
+            transition: 0.12s ease;
+        }
+
+        /* OTHER SCREENS */
+        #screen2,
+        #screen3 {
+
+            display: none;
+
+            animation: appear 0.6s ease;
+        }
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+        }
+
+        /* DATE INPUT */
+        input[type="date"] {
+
+            width: 90%;
+
+            padding: 15px;
+
+            margin: 25px 0;
+
+            border: 2px solid #ff8ba3;
+
+            border-radius: 15px;
+
+            font-size: 17px;
+
+            outline: none;
+        }
+
+        /* FINAL DATE */
+        .selected-date {
+
+            margin: 20px 0;
+
+            padding: 16px;
+
+            background: #fff0f4;
+
+            border-radius: 18px;
+
+            color: #ff416c;
+
+            font-weight: bold;
+
+            font-size: 18px;
+        }
+
+        /* FLOATING HEARTS */
+        .floating-heart {
+
+            position: fixed;
+
+            bottom: -50px;
+
+            pointer-events: none;
+
+            animation:
+                floatUp linear forwards;
+        }
+
+        @keyframes floatUp {
+
+            from {
+
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 1;
+            }
+
+            to {
+
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ================================= -->
+    <!-- SCREEN 1 : MAIN QUESTION -->
+    <!-- ================================= -->
+
+    <div class="card">
+
+        <div id="screen1">
+
+            <div class="heart">
+                ❤️
+            </div>
+
+
+            <h1>
+                Will You Go Out With Me? 🥰
+            </h1>
+
+
+            <p class="from">
+                A little question from Nitesh ❤️
+            </p>
+
+
+            <p class="small-text">
+                I have something special to ask you... ✨
+            </p>
+
+
+            <div class="buttons">
+
+                <button id="yes">
+                    Yes 💖
+                </button>
+
+
+                <button id="no">
+                    No 😏
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- SCREEN 2 : DATE SELECTION -->
+        <!-- ================================= -->
+
+        <div id="screen2">
+
+            <div class="heart">
+                🥰
+            </div>
+
+
+            <h1>
+                Yayyyy! ❤️
+            </h1>
+
+
+            <p>
+                When are you free? 🗓️
+            </p>
+
+
+            <p class="small-text">
+                Choose a day that works for you. 💕
+            </p>
+
+
+            <input
+                type="date"
+                id="datePicker"
+            >
+
+
+            <br>
+
+
+            <button id="confirm">
+                Confirm Date 💖
+            </button>
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- SCREEN 3 : FINAL MESSAGE -->
+        <!-- ================================= -->
+
+        <div id="screen3">
+
+            <div class="heart">
+                💖
+            </div>
+
+
+            <h1>
+                Okay! ❤️
+            </h1>
+
+
+            <p>
+                I'll wait for this day. 🥰
+            </p>
+
+
+            <div class="selected-date">
+
+                📅
+
+                <span id="finalDate"></span>
+
+            </div>
+
+
+            <p>
+                Can't wait to spend some
+                beautiful time with you! 💕
+            </p>
+
+
+            <p>
+                — Nitesh ❤️
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* =================================
+           GET ELEMENTS
+        ================================= */
+
+        const screen1 =
+            document.getElementById("screen1");
+
+        const screen2 =
+            document.getElementById("screen2");
+
+        const screen3 =
+            document.getElementById("screen3");
+
+
+        const yes =
+            document.getElementById("yes");
+
+        const no =
+            document.getElementById("no");
+
+
+        const confirm =
+            document.getElementById("confirm");
+
+
+        const datePicker =
+            document.getElementById("datePicker");
+
+
+        const finalDate =
+            document.getElementById("finalDate");
+
+
+        /* =================================
+           SET TODAY AS MINIMUM DATE
+        ================================= */
+
+        const today = new Date();
+
+        const year =
+            today.getFullYear();
+
+        const month =
+            String(
+                today.getMonth() + 1
+            ).padStart(2, "0");
+
+        const day =
+            String(
+                today.getDate()
+            ).padStart(2, "0");
+
+
+        datePicker.min =
+            `${year}-${month}-${day}`;
+
+
+        /* =================================
+           NO BUTTON - RUN AWAY
+        ================================= */
+
+        function moveNoButton() {
+
+            const padding = 20;
+
+
+            const buttonWidth =
+                no.offsetWidth;
+
+
+            const buttonHeight =
+                no.offsetHeight;
+
+
+            const maxX =
+                window.innerWidth -
+                buttonWidth -
+                padding;
+
+
+            const maxY =
+                window.innerHeight -
+                buttonHeight -
+                padding;
+
+
+            const randomX =
+                Math.floor(
+                    Math.random() * maxX
+                );
+
+
+            const randomY =
+                Math.floor(
+                    Math.random() * maxY
+                );
+
+
+            no.style.position =
+                "fixed";
+
+
+            no.style.left =
+                randomX + "px";
+
+
+            no.style.top =
+                randomY + "px";
+        }
+
+
+        /* =================================
+           CURSOR DETECTION
+        ================================= */
+
+        document.addEventListener(
+            "mousemove",
+            function(event) {
+
+                const rect =
+                    no.getBoundingClientRect();
+
+
+                const centerX =
+                    rect.left +
+                    rect.width / 2;
+
+
+                const centerY =
+                    rect.top +
+                    rect.height / 2;
+
+
+                const distance =
+                    Math.sqrt(
+
+                        Math.pow(
+                            event.clientX -
+                            centerX,
+                            2
+                        )
+
+                        +
+
+                        Math.pow(
+                            event.clientY -
+                            centerY,
+                            2
+                        )
+
+                    );
+
+
+                /*
+                   Cursor 70px ke andar
+                   aate hi button bhaagega
+                */
+
+                if (distance < 70) {
+
+                    moveNoButton();
+
+                }
+
+            }
+        );
+
+
+        /* =================================
+           MOBILE TOUCH
+        ================================= */
+
+        no.addEventListener(
+            "touchstart",
+            function(event) {
+
+                event.preventDefault();
+
+                moveNoButton();
+
+            }
+        );
+
+
+        /* =================================
+           YES BUTTON
+        ================================= */
+
+        yes.addEventListener(
+            "click",
+            function() {
+
+                screen1.style.display =
+                    "none";
+
+
+                screen2.style.display =
+                    "block";
+
+            }
+        );
+
+
+        /* =================================
+           CONFIRM DATE
+        ================================= */
+
+        confirm.addEventListener(
+            "click",
+            function() {
+
+                if (
+                    datePicker.value === ""
+                ) {
+
+                    alert(
+                        "Please choose a date ❤️"
+                    );
+
+                    return;
+                }
+
+
+                const selected =
+                    new Date(
+                        datePicker.value +
+                        "T00:00:00"
+                    );
+
+
+                const options = {
+
+                    weekday: "long",
+
+                    year: "numeric",
+
+                    month: "long",
+
+                    day: "numeric"
+
+                };
+
+
+                finalDate.textContent =
+                    selected.toLocaleDateString(
+                        "en-US",
+                        options
+                    );
+
+
+                screen2.style.display =
+                    "none";
+
+
+                screen3.style.display =
+                    "block";
+
+
+                createHearts();
+
+            }
+        );
+
+
+        /* =================================
+           CREATE FLOATING HEARTS
+        ================================= */
+
+        function createHearts() {
+
+            for (
+                let i = 0;
+                i < 35;
+                i++
+            ) {
+
+                const heart =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                heart.className =
+                    "floating-heart";
+
+
+                const emojis = [
+
+                    "❤️",
+                    "💕",
+                    "💖",
+                    "💗",
+                    "🥰",
+                    "✨"
+
+                ];
+
+
+                heart.textContent =
+                    emojis[
+                        Math.floor(
+                            Math.random() *
+                            emojis.length
+                        )
+                    ];
+
+
+                heart.style.left =
+                    Math.random() *
+                    100 +
+                    "%";
+
+
+                heart.style.fontSize =
+                    (
+                        18 +
+                        Math.random() * 30
+                    ) +
+                    "px";
+
+
+                heart.style.animationDuration =
+                    (
+                        4 +
+                        Math.random() * 5
+                    ) +
+                    "s";
+
+
+                document.body.appendChild(
+                    heart
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        heart.remove();
+
+                    },
+                    10000
+                );
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
