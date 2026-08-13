@@ -460,130 +460,30 @@
         /* =================================
            NO BUTTON - RUN AWAY
         ================================= */
+       /* GET ELEMENTS */
 
-        function moveNoButton() {
+const screen1 = document.getElementById("screen1");
+const screen2 = document.getElementById("screen2");
+const screen3 = document.getElementById("screen3");
 
-            const padding = 20;
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
 
-
-            const buttonWidth =
-                no.offsetWidth;
-
-
-            const buttonHeight =
-                no.offsetHeight;
+const confirm = document.getElementById("confirm");
 
 
-            const maxX =
-                window.innerWidth -
-                buttonWidth -
-                padding;
+// 👇 YAHAN NAYA NO BUTTON CODE
+let noCount = 0;
 
+const noTexts = [
+    "No 😏",
+    "Are you sure? 🥺",
+    "Really? 😭",
+    "Think again! 😂",
+    "Catch me if you can! 🏃"
+];
 
-            const maxY =
-                window.innerHeight -
-                buttonHeight -
-                padding;
-
-
-            const randomX =
-                Math.floor(
-                    Math.random() * maxX
-                );
-
-
-            const randomY =
-                Math.floor(
-                    Math.random() * maxY
-                );
-
-
-            no.style.position =
-                "fixed";
-
-
-            no.style.left =
-                randomX + "px";
-
-
-            no.style.top =
-                randomY + "px";
-        }
-
-
-        /* =================================
-           CURSOR DETECTION
-        ================================= */
-
-        document.addEventListener(
-            "mousemove",
-            function(event) {
-
-                const rect =
-                    no.getBoundingClientRect();
-
-
-                const centerX =
-                    rect.left +
-                    rect.width / 2;
-
-
-                const centerY =
-                    rect.top +
-                    rect.height / 2;
-
-
-                const distance =
-                    Math.sqrt(
-
-                        Math.pow(
-                            event.clientX -
-                            centerX,
-                            2
-                        )
-
-                        +
-
-                        Math.pow(
-                            event.clientY -
-                            centerY,
-                            2
-                        )
-
-                    );
-
-
-                /*
-                   Cursor 70px ke andar
-                   aate hi button bhaagega
-                */
-
-                if (distance < 70) {
-
-                    moveNoButton();
-
-                }
-
-            }
-        );
-
-
-        /* =================================
-           MOBILE TOUCH
-        ================================= */
-
-        no.addEventListener(
-            "touchstart",
-            function(event) {
-
-                event.preventDefault();
-
-                moveNoButton();
-
-            }
-        );
-
-
+// ...baaki No button code...
         /* =================================
            YES BUTTON
         ================================= */
